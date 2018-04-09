@@ -7,6 +7,11 @@ function async (app) {
   app.mount = choo.mount.bind(app)
   app.toString = choo.toString.bind(app)
   app._prerender = choo._prerender.bind(app)
+
+  app.use(function (state, emitter, app) {
+    state.async = true
+  })
+
   return app
 }
 
